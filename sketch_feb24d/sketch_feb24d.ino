@@ -34,16 +34,12 @@ void loop(){
       digitalWrite (LED_PIN, LOW);
   }
 
-  String s= "HTTP/1.1 200 OK\r\n";
+  String s = "HTTP/1.1 200 OK\r\n";
   s += "Content-Type: text/html\r\n\r\n";
-  s += "<!DOCTYPE HTML>\r\n<html>\r\n";
-  s += "<br><input type=\"button\" name=\"b1\" value=\"Turn LED ON\" onclick=\"location.href='/ON'\">";
-  s =+ "<br><br><br>";
-  s += "<input type=\"button\" name=\"b1\" value=\"Turn LED OFF\" onclick=\"location.href='/OFF\'>";
-  s += "</html>\n";
+  s += "<!DOCTYPE html><html><head><title>LED control</title></head><body><br><br><button onclick=\"location.href='/ON'\">LED ON</button><br><br><br><button onclick=\"location.href='/OFF'\">LED OFF</button></body></html>";
 
   client.flush();
-  client.print(s);
+  client.println(s);
   delay(1);
   Serial.println("Client disconnected");
 }
